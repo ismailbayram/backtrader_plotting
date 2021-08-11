@@ -416,8 +416,6 @@ class Bokeh(metaclass=bt.MetaParams):
                          )
 
         self.html = html
-        with open(filename, 'w') as f:
-            f.write(html)
 
         return filename
 
@@ -545,7 +543,7 @@ class Bokeh(metaclass=bt.MetaParams):
                     if self.p.output_mode == 'show':
                         view(filename)
             elif self.p.output_mode == 'memory':
-                pass
+                filename = self._output_plot_file(model, idx, self.p.filename)
             else:
                 raise RuntimeError(f'Invalid parameter "output_mode" with value: {self.p.output_mode}')
 
