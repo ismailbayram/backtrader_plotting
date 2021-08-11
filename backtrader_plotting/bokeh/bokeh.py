@@ -69,6 +69,7 @@ class Bokeh(metaclass=bt.MetaParams):
               )
 
     def __init__(self, **kwargs):
+        self.html = None
         for pname, pvalue in kwargs.items():
             setattr(self.p.scheme, pname, pvalue)
 
@@ -414,6 +415,7 @@ class Bokeh(metaclass=bt.MetaParams):
                              )
                          )
 
+        self.html = html
         with open(filename, 'w') as f:
             f.write(html)
 
